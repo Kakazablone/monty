@@ -12,9 +12,8 @@
 int main(int argc, char *argv[])
 {
 FILE *fp = NULL;
-char *buffer = NULL;
-ssize_t read = 0, len = 0;
-int line = 1;
+char *buffer = NULL, *read = NULL;
+int line = 1, len = 1024;
 
 	if (argc != 2)
 	{
@@ -28,14 +27,16 @@ int line = 1;
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit (EXIT_FAILURE);
 	}
-	while (read != -1)
+	while (read != NULL)
 	{
-		read = getline(&buffer, &len, fp);
+		buffer = malloc(1024);
+		read = fgets(buffer, len, fp);
 		line_parse(buffer);
 		line++;
+		free(buffer);
 	}
 
 
-free(buffer);
+fclose(fp);
 return (0);
 }

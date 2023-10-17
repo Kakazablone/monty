@@ -9,7 +9,7 @@
 
 void line_parse(char *buf)
 {
-char *opcode, *opvalue, *delim = "\n ";
+char *opcode = NULL, *opvalue = NULL, *delim = "\n ";
 
 	if (buf == NULL)
 	{
