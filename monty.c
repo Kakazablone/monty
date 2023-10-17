@@ -12,8 +12,8 @@
 int main(int argc, char *argv[])
 {
 FILE *fp = NULL;
-char *buffer = NULL, *read = NULL;
-int line = 1, len = 1024;
+char buffer[1024];
+int line = 1;
 
 	if (argc != 2)
 	{
@@ -27,14 +27,12 @@ int line = 1, len = 1024;
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit (EXIT_FAILURE);
 	}
-	while (read != NULL)
-	{
-		buffer = malloc(1024);
-		read = fgets(buffer, len, fp);
-		line_parse(buffer);
-		line++;
-		free(buffer);
-	}
+	
+    while (fgets(buffer, 1024, fp) != NULL)
+    {
+        line_parse(buffer);
+        line++;
+    }
 
 
 fclose(fp);

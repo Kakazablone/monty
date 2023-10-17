@@ -19,6 +19,6 @@ char *opcode = NULL, *opvalue = NULL, *delim = "\n ";
 
 	opcode = strtok(buf, delim);
 	opvalue = strtok(NULL, delim);
-	/*printf("%s %s\n", opcode, opvalue);*/
+	printf("%s %s\n", opcode, opvalue);
 
 }
