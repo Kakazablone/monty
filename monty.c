@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+stack_t *head = NULL;
+
 /**
 *
 *
@@ -30,11 +32,33 @@ unsigned int line = 0;
 	
     while (fgets(buffer, 1024, fp) != NULL)
     {
-        line_parse(buffer);
+        line_parse(buffer, line);
         line++;
     }
 
 
 fclose(fp);
+freenodes();
 return (0);
+}
+
+
+
+
+
+
+
+void freenodes(void)
+{
+	stack_t *temp;
+
+	if (head == NULL)
+		return;
+
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
 }
