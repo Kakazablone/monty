@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
-*
-*
-*
-*
+*line_parse - parse through individual lines from stream
+*@buf: line from file
+*@line: line number
+*Return: Void
 */
 
 void line_parse(char *buf, int line)
@@ -14,7 +14,7 @@ char *opcode = NULL, *opvalue = NULL, *delim = "\n ";
 	if (buf == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	opcode = strtok(buf, delim);
@@ -24,10 +24,11 @@ char *opcode = NULL, *opvalue = NULL, *delim = "\n ";
 }
 
 /**
-*
-*
-*
-*
+*opcode_mapping - links an 'opcode' to corresponding function
+*@opcode: operation code
+*@opvalue: operation argument
+*@line: line umber
+*Return: Void
 */
 
 void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
@@ -36,7 +37,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 
 	instruction_t opsmap[] = {
 	{"push", push},
-    {"pall", pall},
+	{"pall", pall},
 	{"pint", show_top},
 	{"add", addition},
 /*	{"swap", swap},*/
@@ -52,7 +53,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 	{
 		if (strcmp(opcode, opsmap[i].opcode) == 0)
 		{
-			execute_func(opsmap[i].f, opcode, opvalue, line);
+			execute(opsmap[i].f, opcode, opvalue, line);
 			flag = 0;
 		}
 	}
@@ -61,12 +62,15 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 }
 
 /**
-*
-*
+*execute - executes an operation based on an opcode
+*@function: function to be executed
+*@opcode: operation code
+*@opvalue: operation argument
+*@line: line number in file
 *
 */
 
-void execute_func(op_func function, char *opcode, char *opvalue, unsigned int line)
+void execute(op_func function, char *opcode, char *opvalue, unsigned int line)
 {
 	stack_t *node;
 	int i, flag;
@@ -87,17 +91,16 @@ void execute_func(op_func function, char *opcode, char *opvalue, unsigned int li
 				fprintf(stderr, "L%d: usage: push integer\n", line);
 		}
 		node = newnode(atoi(opvalue) * flag);
-        function(&node, line);
+	function(&node, line);
 	}
 	else
 		function(&head, line);
 }
 
 /**
- *
- *
- *
- *
+ *newnode - creates a new doubly linked list node
+ *@n: data to be inserted into node
+ *Return: pointer to new node
  */
 
 stack_t *newnode(int n)

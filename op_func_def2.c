@@ -12,10 +12,10 @@ void addition(stack_t **stack, unsigned int line)
 	int result;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-    {
-        fprintf(stderr, "L%d: can't add, stack too short", line);
-        exit(EXIT_FAILURE);
-    }
+	{
+		fprintf(stderr, "L%d: can't add, stack too short", line);
+		exit(EXIT_FAILURE);
+	}
 
 	(*stack) = (*stack)->next;
 	result = (*stack)->n + (*stack)->prev->n;

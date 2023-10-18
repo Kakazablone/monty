@@ -44,11 +44,10 @@ typedef void (*op_func)(stack_t **, unsigned int);
 void line_parse(char *buf, int line);
 extern stack_t *head;
 void opcode_mapping(char *opcode, char *opvalue, unsigned int line);
-void execute_func(op_func function, char *opcode, char *opvalue, unsigned int line);
+void execute(op_func function, char *opcode, char *opvalue, unsigned int line);
 void freenodes(void);
 stack_t *newnode(int n);
-void line_parse(char *buf);
-int opcode_mapping(char *opcode, stack_t stck, unsigned int line);
+/*int opcode_mapping(char *opcode, stack_t stck, unsigned int line);*/
 
 
 /* Mandatory */

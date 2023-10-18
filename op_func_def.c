@@ -11,10 +11,10 @@ void push(stack_t **node, unsigned int line)
 	stack_t *temp;
 
 	if (node == NULL || *node == NULL)
-    {
-        fprintf(stderr, "L%d: usage: push integer\n", line);
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
-    }
+	}
 	if (head == NULL)
 	{
 		head = *node;
@@ -62,11 +62,11 @@ void nop(stack_t **stack, unsigned int line)
 }
 
 /**
-  * pop - removes an element from the top of a stack
-  * 
-  *@stack: Pointer to head
-  *@line: opcode line number
-  */
+ * pop - removes an element from the top of a stack
+ *
+ *@stack: Pointer to head
+ *@line: opcode line number
+ */
 
 void pop(stack_t **stack, unsigned int line)
 {
