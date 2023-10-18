@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
 FILE *fp = NULL;
 char buffer[1024];
-int line = 1;
+unsigned int line = 0;
 
 	if (argc != 2)
 	{
