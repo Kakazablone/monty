@@ -38,5 +38,8 @@ typedef struct instruction_s
 } instruction_t;
 
 void line_parse(char *buf);
+int opcode_mapping(char *opcode, stack_t stck, unsigned int line);
+void push(stack_t **stack, unsigned int line);
+void pall(stack_t **stack, unsigned int line);
 
 #endif
