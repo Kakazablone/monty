@@ -74,11 +74,11 @@ void execute_func(op_func function, char *opcode, char *opvalue, unsigned int li
 	flag = 1;
 	if (strcmp(opcode, "push") == 0)
 	{
-	/*	if (opvalue != NULL && opvalue[0] == '-')
+		if (opvalue != NULL && opvalue[0] == '-')
 		{
 			opvalue = opvalue + 1;
 			flag = -1;
-		}*/
+		}
 		if (opvalue == NULL)
 			fprintf(stderr, "L%d: usage: push integer\n", line);
 		for (i = 0; opvalue[i] != '\0'; i++)
