@@ -10,9 +10,9 @@ void push(stack_t **node, __attribute__((unused))unsigned int line)
 {
 	stack_t *temp;
 
-    if (node == NULL || *node == NULL)
-        exit(EXIT_FAILURE);
-    if (head == NULL)
+	if (node == NULL || *node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
 	{
 		head = *node;
 		return;
