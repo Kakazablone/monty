@@ -47,6 +47,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 	{"div", divide},
 	{"mul", mul},
 	{"mod", mod},
+	{"pchar", pchar},
 	{NULL, NULL}
 	};
 

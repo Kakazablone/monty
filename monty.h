@@ -58,10 +58,13 @@ void nop(stack_t **stack, unsigned int line);
 void show_top(stack_t **stack, unsigned int line);
 void addition(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line);
+
+/*Advanced*/
 void sub(stack_t **stack, unsigned int line);
 void divide(stack_t **stack, unsigned int line);
 void mul(stack_t **stack, unsigned int line);
 void mod(stack_t **stack, unsigned int line);
+void pchar(stack_t **stack, unsigned int line);
 
-/* Advanced */
+
 #endif
