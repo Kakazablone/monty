@@ -83,7 +83,7 @@ void sub(stack_t **stack, unsigned int line)
 }
 
 /**
-*div - divides top elem value from second to element val
+*divide - divides top elem value from second to element val
 *@stack: address of pointer to firsr stack element
 *@line: line number
 *
@@ -108,6 +108,30 @@ int result = 0;
 		exit(EXIT_FAILURE);
 	}
 
+	(*stack)->n = result;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}
+
+/**
+*mul - multiplies top elem value from second to element val
+*@stack: address of pointer to firsr stack element
+*@line: line number
+*
+*/
+
+void mul(stack_t **stack, unsigned int line)
+{
+	int result = 0;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = (*stack)->next;
+	result = (*stack)->n * (*stack)->prev->n;
 	(*stack)->n = result;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
