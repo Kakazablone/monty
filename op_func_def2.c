@@ -25,7 +25,7 @@ void addition(stack_t **stack, unsigned int line)
 }
 
 /**
- *swap - swap the top two elements in the stack
+ *swap - swaps the top two elements in the stack
  *@stack: address of pointer to first stack element
  *@line: line number
  *
@@ -57,3 +57,28 @@ void swap(stack_t **stack, unsigned int line)
 
 	*stack = secondtop;
 }
+
+/**
+*sub - subtracts top elem value from second to element val
+*@stack: address of pointer to firsr stack element
+*@line: line number
+*
+*/
+
+void sub(stack_t **stack, unsigned int line)
+{
+	int result = 0;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short", line);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = (*stack)->next;
+	result = (*stack)->n - (*stack)->prev->n;
+	(*stack)->n = result;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}
+
