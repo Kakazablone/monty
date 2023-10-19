@@ -36,10 +36,10 @@ void swap(stack_t **stack, unsigned int line)
 	stack_t *top, *secondtop;
 	(void)line;
 	if (*stack == NULL || stack ==  NULL)
-    {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", line);
-        exit(EXIT_FAILURE);
-    }
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
 
 	top = *stack;
 	secondtop = top->next;
@@ -82,3 +82,26 @@ void sub(stack_t **stack, unsigned int line)
 	(*stack)->prev = NULL;
 }
 
+/**
+*div - divides top elem value from second to element val
+*@stack: address of pointer to firsr stack element
+*@line: line number
+*
+*/
+
+void div(stack_t **stack, unsigned int line)
+{
+int result = 0;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = (*stack)->next;
+	result = (*stack)->n / (*stack)->prev->n;
+	(*stack)->n = result;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}
