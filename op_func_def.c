@@ -95,7 +95,7 @@ void show_top(stack_t **stack, unsigned int line)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
