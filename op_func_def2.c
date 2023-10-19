@@ -89,7 +89,7 @@ void sub(stack_t **stack, unsigned int line)
 *
 */
 
-void div(stack_t **stack, unsigned int line)
+void divide(stack_t **stack, unsigned int line)
 {
 int result = 0;
 
