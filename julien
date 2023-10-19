@@ -5,7 +5,8 @@ push 4
 #pall
 #swap
 #div
-mul
+#mul
+mod
 pall
 sub
 #pall

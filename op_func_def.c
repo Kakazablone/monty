@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * push - pushes an element to the stack.
  *
@@ -22,8 +23,6 @@ void push(stack_t **node, __attribute__((unused))unsigned int line)
 	head->next = temp;
 	temp->prev = head;
 }
-
-
 
 /**
  * pall -  prints node in the stack.

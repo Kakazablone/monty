@@ -46,6 +46,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 	{"sub", sub},
 	{"div", divide},
 	{"mul", mul},
+	{"mod", mod},
 	{NULL, NULL}
 	};
 
@@ -117,4 +118,35 @@ stack_t *newnode(int n)
 	node->prev = NULL;
 	node->n = n;
 	return (node);
+}
+
+/**
+*mod - modulo's top elem value from second to element val
+*@stack: address of pointer to firsr stack element
+*@line: line number
+*
+*/
+
+void mod(stack_t **stack, unsigned int line)
+{
+	int result = 0;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = (*stack)->next;
+	if ((*stack)->prev->n != 0)
+		result = (*stack)->n % (*stack)->prev->n;
+	else
+	{
+		fprintf(stderr, "L%d: division by zero\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	(*stack)->n = result;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }

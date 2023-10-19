@@ -61,6 +61,7 @@ void swap(stack_t **stack, unsigned int line);
 void sub(stack_t **stack, unsigned int line);
 void divide(stack_t **stack, unsigned int line);
 void mul(stack_t **stack, unsigned int line);
+void mod(stack_t **stack, unsigned int line);
 
 /* Advanced */
 #endif
