@@ -10,7 +10,12 @@ void pchar(stack_t **stack, unsigned int line)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n",(*stack)->n);
