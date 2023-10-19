@@ -58,7 +58,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 		}
 	}
 	if (flag == 1)
-		fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line, opcode);
 }
 
 /**
@@ -91,7 +91,7 @@ void execute(op_func function, char *opcode, char *opvalue, unsigned int line)
 				fprintf(stderr, "L%d: usage: push integer\n", line);
 		}
 		node = newnode(atoi(opvalue) * flag);
-	function(&node, line);
+	    function(&node, line);
 	}
 	else
 		function(&head, line);

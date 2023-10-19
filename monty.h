@@ -52,7 +52,7 @@ stack_t *newnode(int n);
 
 /* Mandatory */
 void pall(stack_t **stack, unsigned int line);
-void push(stack_t **node, unsigned int line);
+void push(stack_t **node, __attribute__((unused))unsigned int line);
 void pop(stack_t **stack, unsigned int line);
 void nop(stack_t **stack, unsigned int line);
 void show_top(stack_t **stack, unsigned int line);
