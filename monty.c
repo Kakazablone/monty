@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 {
 	FILE *fp = NULL;
 	char buffer[1024];
-	unsigned int line = 0;
+	unsigned int line = 1;
 
 	if (argc != 2)
 	{
