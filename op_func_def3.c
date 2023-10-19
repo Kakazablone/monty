@@ -36,9 +36,9 @@ void pstr(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 		putchar('\n');
 
-	while(temp != NULL || (*stack)->n > 0 || (*stack)->n < 128)
+	while(temp != NULL && (temp->n > 0 && temp->n < 128))
 	{
-		printf("%c", (*stack)->n);
+		printf("%c", temp->n);
 		temp = temp->next;
 	}
 	putchar('\n');
