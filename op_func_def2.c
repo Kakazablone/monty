@@ -103,7 +103,10 @@ int result = 0;
 	if ((*stack)->prev->n != 0)
 		result = (*stack)->n / (*stack)->prev->n;
 	else
+	{
 		fprintf(stderr, "L%d: division by zero\n", line);
+		exit(EXIT_FAILURE);
+	}
 
 	(*stack)->n = result;
 	free((*stack)->prev);
