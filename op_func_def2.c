@@ -36,7 +36,10 @@ void swap(stack_t **stack, unsigned int line)
 	stack_t *top, *secondtop;
 	(void)line;
 	if (*stack == NULL || stack ==  NULL)
-		return;
+    {
+        fprintf(stderr, "L%d: can't swap, stack too short\n", line);
+        exit(EXIT_FAILURE);
+    }
 
 	top = *stack;
 	secondtop = top->next;
