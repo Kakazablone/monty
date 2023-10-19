@@ -43,6 +43,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 	{"swap", swap},
 	{"pop", pop},
 	{"nop", nop},
+	{"sub", sub},
 	{NULL, NULL}
 	};
 
