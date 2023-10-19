@@ -23,3 +23,34 @@ void addition(stack_t **stack, unsigned int line)
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
+
+/**
+ *swap - swap the top two elements in the stack
+ *@stack: address of pointer to first stack element
+ *@line: line number
+ *
+ */
+
+void swap(stack_t **stack, unsigned int line)
+{
+	stack_t *top, *secondtop;
+	(void)line;
+	if (*stack == NULL || stack ==  NULL)
+		return;
+
+	top = *stack;
+	secondtop = top->next;
+
+	top->next = secondtop->next;
+	if (secondtop->next != NULL)
+		secondtop->next->prev = top;
+
+	secondtop->prev = top->prev;
+	if (top->prev != NULL)
+		top->prev->next = secondtop;
+
+	top->prev = secondtop;
+	secondtop->next = top;
+
+	*stack = secondtop;
+}

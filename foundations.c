@@ -40,7 +40,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 	{"pall", pall},
 	{"pint", show_top},
 	{"add", addition},
-/*	{"swap", swap},*/
+	{"swap", swap},
 	{"pop", pop},
 	{"nop", nop},
 	{NULL, NULL}
