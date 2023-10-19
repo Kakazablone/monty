@@ -58,6 +58,7 @@ void nop(stack_t **stack, unsigned int line);
 void show_top(stack_t **stack, unsigned int line);
 void addition(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line);
+void sub(stack_t **stack, unsigned int line);
 
 
 /* Advanced */
