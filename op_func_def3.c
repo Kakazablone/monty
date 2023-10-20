@@ -36,10 +36,38 @@ void pstr(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 		putchar('\n');
 
-	while(temp != NULL && (temp->n > 0 && temp->n < 128))
+	while (tmp != NULL)
 	{
-		printf("%c", temp->n);
-		temp = temp->next;
+		ascii = tmp->n;
+		if (ascii <= 0 || ascii > 127)
+			break;
+		printf("%c", ascii);
+		tmp = tmp->next;
 	}
-	putchar('\n');
+	printf("\n");
+}
+
+
+/**
+ * rotl - Rotates the first node of the stack to the bottom.
+ * @stack: Pointer to a pointer pointing to top node of the stack.
+ * @ln: Interger representing the line number of of the opcode.
+ */
+void rotl(stack_t **stack, unsigned int line)
+{
+	stack_t *tmp;
+    (void)line;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	tmp = *stack;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+
+	tmp->next = *stack;
+	(*stack)->prev = tmp;
+	*stack = (*stack)->next;
+	(*stack)->prev->next = NULL;
+	(*stack)->prev = NULL;
 }
