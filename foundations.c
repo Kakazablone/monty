@@ -7,9 +7,10 @@
 *Return: Void
 */
 
-void line_parse(char *buf, int line)
+int line_parse(char *buf, int line)
 {
-char *opcode = NULL, *opvalue = NULL, *delim = " \n";
+    char *opcode = NULL, *opvalue = NULL, *delim = " \n";
+    int rt_val = 0;
 
 	if (buf == NULL)
 	{
@@ -18,8 +19,17 @@ char *opcode = NULL, *opvalue = NULL, *delim = " \n";
 	}
 
 	opcode = strtok(buf, delim);
+    if (opcode == NULL)
+		return (rt_val);
 	opvalue = strtok(NULL, delim);
-	opcode_mapping(opcode, opvalue, line);
+
+    if (strcmp(opcode, "stack") == 0)
+		return (0);
+	if (strcmp(opcode, "queue") == 0)
+		return (1);
+
+	opcode_mapping(opcode, opvalue, line, rt_val);
+    return (rt_val);
 
 }
 
@@ -31,7 +41,7 @@ char *opcode = NULL, *opvalue = NULL, *delim = " \n";
 *Return: Void
 */
 
-void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
+void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 {
 	int i = 0, flag;
 
@@ -57,7 +67,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 	{
 		if (strcmp(opcode, opsmap[i].opcode) == 0)
 		{
-			execute(opsmap[i].f, opcode, opvalue, line);
+			execute(opsmap[i].f, opcode, opvalue, line, rt_val);
 			flag = 0;
 		}
 	}
@@ -74,31 +84,34 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line)
 *
 */
 
-void execute(op_func function, char *opcode, char *opvalue, unsigned int line)
+void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
 {
 	stack_t *node;
 	int i, flag;
 
 	flag = 1;
-	if (strcmp(opcode, "push") == 0)
+	if (strcmp(opc, "push") == 0)
 	{
-		if (opvalue != NULL && opvalue[0] == '-')
+		if (opv != NULL && opv[0] == '-')
 		{
-			opvalue = opvalue + 1;
+			opv = opv + 1;
 			flag = -1;
 		}
-		if (opvalue == NULL)
-			fprintf(stderr, "L%d: usage: push integer\n", line);
-		for (i = 0; opvalue[i] != '\0'; i++)
+		if (opv == NULL)
+			fprintf(stderr, "L%u: usage: push integer\n", line);
+		for (i = 0; opv[i] != '\0'; i++)
 		{
-			if (isdigit(opvalue[i]) == 0)
+			if (isdigit(opv[i]) == 0)
 				fprintf(stderr, "L%d: usage: push integer\n", line);
 		}
-		node = newnode(atoi(opvalue) * flag);
-	    function(&node, line);
+		node = newnode(atoi(opv) * flag);
+        if (rt_val == 0)
+			func(&node, line);
+		if (rt_val == 1)
+			en_queue(&node, line);
 	}
 	else
-		function(&head, line);
+		func(&head, line);
 }
 
 /**

@@ -62,3 +62,31 @@ void freenodes(void)
 		free(temp);
 	}
 }
+
+
+/**
+ * en_queue - adds a new node to the queue
+ *
+ * @newnode: pointer to node to be added
+ * line: line number
+ */
+
+void en_queue(stack_t **newnode, __attribute__((unused))unsigned int line_pos)
+{
+	stack_t *temp;
+
+	if (newnode == NULL || *newnode == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *newnode;
+		return;
+	}
+	temp = head;
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *newnode;
+	(*newnode)->prev = temp;
+
+}
