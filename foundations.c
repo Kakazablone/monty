@@ -41,7 +41,7 @@ int line_parse(char *buf, int line)
 *Return: Void
 */
 
-void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
+int opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 {
 	int i = 0, flag;
 
@@ -59,8 +59,8 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 	{"mod", mod},
 	{"pchar", pchar},
 	{"pstr", pstr},
-    {"rotl", rotl},
-    {"rotr", rotr},
+	{"rotl", rotl},
+	{"rotr", rotr},
 	{NULL, NULL}
 	};
 
@@ -73,10 +73,12 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 		{
 			execute(opsmap[i].f, opcode, opvalue, line, rt_val);
 			flag = 0;
+			return (0);
 		}
 	}
 	if (flag == 1)
 		fprintf(stderr, "L%u: unknown instruction %s\n", line, opcode);
+	return (1);
 }
 
 /**
