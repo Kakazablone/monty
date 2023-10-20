@@ -51,8 +51,8 @@ void pstr(stack_t **stack, unsigned int line)
 
 /**
  * rotl - Rotates the first node of the stack to the bottom.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
+ * @stack: Pointer to head
+ * @line: Interger representing the line number of of the opcode.
  */
 void rotl(stack_t **stack, unsigned int line)
 {
@@ -71,4 +71,31 @@ void rotl(stack_t **stack, unsigned int line)
 	*stack = (*stack)->next;
 	(*stack)->prev->next = NULL;
 	(*stack)->prev = NULL;
+}
+
+
+/**
+ * rotr - Rotates the last node of the stack to the top.
+ * @stack: Pointer to head 
+ * @line: Interger representing the line number of of the opcode.
+ */
+
+void rotr(stack_t **stack, unsigned int line)
+{
+	stack_t *temp;
+    (void)line;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	temp = *stack;
+
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *stack;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	(*stack)->prev = temp;
+	(*stack) = temp;
 }

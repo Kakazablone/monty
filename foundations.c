@@ -60,6 +60,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 	{"pchar", pchar},
 	{"pstr", pstr},
     {"rotl", rotl},
+    {"rotr", rotr},
 	{NULL, NULL}
 	};
 
@@ -80,9 +81,9 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 
 /**
 *execute - executes an operation based on an opcode
-*@function: function to be executed
-*@opcode: operation code
-*@opvalue: operation argument
+*@func: function to be executed
+*@opc: operation code
+*@opv: operation argument
 *@line: line number in file
 *
 */
