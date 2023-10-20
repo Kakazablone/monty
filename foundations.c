@@ -65,7 +65,7 @@ int opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 	};
 
 	if (opcode[0] == '#')
-		return;
+		return (0);
 
 	for (flag = 1, i = 0; opsmap[i].opcode != NULL; i++)
 	{
