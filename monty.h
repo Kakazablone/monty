@@ -66,6 +66,6 @@ void mul(stack_t **stack, unsigned int line);
 void mod(stack_t **stack, unsigned int line);
 void pchar(stack_t **stack, unsigned int line);
 void pstr(stack_t **stack, unsigned int line);
-
+void rotl(stack_t **stack, unsigned int line);
 
 #endif

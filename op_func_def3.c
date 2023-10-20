@@ -31,18 +31,19 @@ void pchar(stack_t **stack, unsigned int line)
 void pstr(stack_t **stack, unsigned int line)
 {
 	stack_t *temp = *stack;
+    int ascii;
 	(void)line;
 
 	if (stack == NULL || *stack == NULL)
 		putchar('\n');
 
-	while (tmp != NULL)
+	while (temp != NULL)
 	{
-		ascii = tmp->n;
+		ascii = temp->n;
 		if (ascii <= 0 || ascii > 127)
 			break;
 		printf("%c", ascii);
-		tmp = tmp->next;
+		temp = temp->next;
 	}
 	printf("\n");
 }

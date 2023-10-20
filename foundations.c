@@ -59,6 +59,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 	{"mod", mod},
 	{"pchar", pchar},
 	{"pstr", pstr},
+    {"rotl", rotl},
 	{NULL, NULL}
 	};
 
