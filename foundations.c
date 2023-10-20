@@ -73,7 +73,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 		{
 			execute(opsmap[i].f, opcode, opvalue, line, rt_val);
 			flag = 0;
-			return;
+			/*return;*/
 		}
 	}
 	if (flag == 1)
