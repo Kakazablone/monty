@@ -107,17 +107,17 @@ void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
 			flag = -1;
 		}
 		if (opv == NULL)
-        {
+		{
 			fprintf(stderr, "L%u: usage: push integer\n", line);
-            exit(EXIT_FAILURE);
-        }
+			exit(EXIT_FAILURE);
+		}
 		for (i = 0; opv[i] != '\0'; i++)
 		{
 			if (isdigit(opv[i]) == 0)
-            {
+			{
 				fprintf(stderr, "L%d: usage: push integer\n", line);
-                exit(EXIT_FAILURE);
-            }
+				exit(EXIT_FAILURE);
+			}
 		}
 		node = newnode(atoi(opv) * flag);
 		if (rt_val == 0)
