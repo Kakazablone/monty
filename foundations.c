@@ -24,9 +24,9 @@ int line_parse(char *buf, int line)
 	opvalue = strtok(NULL, delim);
 
     if (strcmp(opcode, "stack") == 0)
-		return (1);
-	if (strcmp(opcode, "queue") == 0)
 		return (0);
+	if (strcmp(opcode, "queue") == 0)
+		return (1);
 
 	opcode_mapping(opcode, opvalue, line, rt_val);
     return (rt_val);
