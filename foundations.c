@@ -9,8 +9,8 @@
 
 int line_parse(char *buf, int line)
 {
-    char *opcode = NULL, *opvalue = NULL, *delim = " \n";
-    int rt_val = 0;
+	char *opcode = NULL, *opvalue = NULL, *delim = " \n";
+	int rt_val = 0;
 
 	if (buf == NULL)
 	{
@@ -19,18 +19,17 @@ int line_parse(char *buf, int line)
 	}
 
 	opcode = strtok(buf, delim);
-    if (opcode == NULL)
+	if (opcode == NULL)
 		return (rt_val);
 	opvalue = strtok(NULL, delim);
 
-    if (strcmp(opcode, "stack") == 0)
+	if (strcmp(opcode, "stack") == 0)
 		return (0);
 	if (strcmp(opcode, "queue") == 0)
 		return (1);
 
 	opcode_mapping(opcode, opvalue, line, rt_val);
-    return (rt_val);
-
+	return (rt_val);
 }
 
 /**
@@ -38,6 +37,7 @@ int line_parse(char *buf, int line)
 *@opcode: operation code
 *@opvalue: operation argument
 *@line: line umber
+*@rt_val: ...
 *Return: Void
 */
 
@@ -79,7 +79,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 	if (flag == 1)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line, opcode);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -89,6 +89,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 *@opc: operation code
 *@opv: operation argument
 *@line: line number in file
+*@rt_val: ....
 *
 */
 
@@ -113,7 +114,7 @@ void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
 				fprintf(stderr, "L%d: usage: push integer\n", line);
 		}
 		node = newnode(atoi(opv) * flag);
-        if (rt_val == 0)
+		if (rt_val == 0)
 			func(&node, line);
 		if (rt_val == 1)
 			en_queue(&node, line);

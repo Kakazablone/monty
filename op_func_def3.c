@@ -31,7 +31,7 @@ void pchar(stack_t **stack, unsigned int line)
 void pstr(stack_t **stack, unsigned int line)
 {
 	stack_t *temp = *stack;
-    int ascii;
+	int ascii;
 	(void)line;
 
 	if (stack == NULL || *stack == NULL)
@@ -57,7 +57,7 @@ void pstr(stack_t **stack, unsigned int line)
 void rotl(stack_t **stack, unsigned int line)
 {
 	stack_t *tmp;
-    (void)line;
+	(void)line;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		return;
@@ -76,14 +76,14 @@ void rotl(stack_t **stack, unsigned int line)
 
 /**
  * rotr - Rotates the last node of the stack to the top.
- * @stack: Pointer to head 
+ * @stack: Pointer to head
  * @line: Interger representing the line number of of the opcode.
  */
 
 void rotr(stack_t **stack, unsigned int line)
 {
 	stack_t *temp;
-    (void)line;
+	(void)line;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		return;
