@@ -47,7 +47,7 @@ void opcode_mapping(char *opcode, char *opval, unsigned int line, int rt_val);
 void execute(op_func func, char *opc, char *opv, unsigned int lne, int rt_val);
 void freenodes(void);
 stack_t *newnode(int n);
-void en_queue(stack_t **newnode, __attribute__((unused))unsigned int line_pos);
+void en_queue(stack_t **newnode, unsigned int line_pos);
 
 
 /* Mandatory */

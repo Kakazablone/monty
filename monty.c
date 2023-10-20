@@ -71,9 +71,10 @@ void freenodes(void)
  * line: line number
  */
 
-void en_queue(stack_t **newnode, __attribute__((unused))unsigned int line_pos)
+void en_queue(stack_t **newnode, unsigned int line)
 {
 	stack_t *temp;
+    (void)line;
 
 	if (newnode == NULL || *newnode == NULL)
 		exit(EXIT_FAILURE);
