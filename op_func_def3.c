@@ -35,10 +35,10 @@ void pstr(stack_t **stack, unsigned int line)
 	(void)line;
 
 	if (stack == NULL || *stack == NULL)
-    {
+	{
 		printf("\n");
 		return;
-    }
+	}
 	while (temp != NULL)
 	{
 		ascii = temp->n;

@@ -68,13 +68,13 @@ void freenodes(void)
  * en_queue - adds a new node to the queue
  *
  * @newnode: pointer to node to be added
- * @line_pos: line number
+ * @line: line number
  */
 
 void en_queue(stack_t **newnode, unsigned int line)
 {
 	stack_t *temp;
-    (void)line;
+	(void)line;
 
 	if (newnode == NULL || *newnode == NULL)
 		exit(EXIT_FAILURE);
