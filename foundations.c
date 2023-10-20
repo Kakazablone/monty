@@ -69,7 +69,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 
 	for (flag = 1, i = 0; opsmap[i].opcode != NULL; i++)
 	{
-		if (strcmp(opcode, opsmap[i].opcode) == 0)
+		if (strncmp(opcode, opsmap[i].opcode, strlen(opsmap[i].opcode)) == 0)
 		{
 			execute(opsmap[i].f, opcode, opvalue, line, rt_val);
 			flag = 0;
